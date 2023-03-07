@@ -6,14 +6,14 @@
 /*   By: asioud <asioud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 06:46:10 by asioud            #+#    #+#             */
-/*   Updated: 2023/03/07 09:12:04 by asioud           ###   ########.fr       */
+/*   Updated: 2023/03/07 09:46:22 by asioud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
-# include "libft/includes/libft.h"
+# include "libft.h"
 
 typedef struct   s_philo_data
 {

@@ -6,11 +6,11 @@
 /*   By: asioud <asioud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 13:06:45 by asioud            #+#    #+#             */
-/*   Updated: 2022/12/20 13:06:47 by asioud           ###   ########.fr       */
+/*   Updated: 2023/03/07 09:29:16 by asioud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "./libft.h"
 
 int32_t	ft_atoi(const char *str)
 {

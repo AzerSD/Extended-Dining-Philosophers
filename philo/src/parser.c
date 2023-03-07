@@ -6,15 +6,15 @@
 /*   By: asioud <asioud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 02:20:40 by asioud            #+#    #+#             */
-/*   Updated: 2023/03/06 18:11:07 by asioud           ###   ########.fr       */
+/*   Updated: 2023/03/07 09:40:03 by asioud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <stdio.h>
+#include <stdio.h>
 
-# include "libft/includes/libft.h"
-# include "philo.h"
-# include "parse.h"
+#include "libft.h"
+#include "philo.h"
+#include "parse.h"
 
 int parse(int argc, char **argv, t_philo_data *philo)
 {

@@ -6,11 +6,11 @@
 /*   By: asioud <asioud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 13:07:54 by asioud            #+#    #+#             */
-/*   Updated: 2022/12/20 13:07:56 by asioud           ###   ########.fr       */
+/*   Updated: 2023/03/07 09:30:50 by asioud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "./libft.h"
 
 bool	ft_isspace(int32_t c)
 {

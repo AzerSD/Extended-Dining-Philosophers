@@ -6,7 +6,7 @@
 /*   By: asioud <asioud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 08:45:28 by asioud            #+#    #+#             */
-/*   Updated: 2023/03/07 09:15:07 by asioud           ###   ########.fr       */
+/*   Updated: 2023/03/07 09:41:36 by asioud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ u_int64_t	get_time(void)
 
 void	ft_sleep(int ms)
 {
-	long long goal;
+	u_int64_t	goal;
 
 	goal = get_time + ms;
 	while (get_time() < goal)

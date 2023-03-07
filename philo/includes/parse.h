@@ -6,14 +6,14 @@
 /*   By: asioud <asioud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 11:31:24 by asioud            #+#    #+#             */
-/*   Updated: 2023/03/07 09:15:44 by asioud           ###   ########.fr       */
+/*   Updated: 2023/03/07 09:46:28 by asioud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSE_H
 # define PARSE_H
 
-# include "../../libft/includes/libft.h"
+# include "libft.h"
 
 # define GRN		"\e[0;32m"
 # define BGRN	"\e[1;32m"
