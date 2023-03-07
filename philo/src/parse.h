@@ -6,7 +6,7 @@
 /*   By: asioud <asioud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 11:31:24 by asioud            #+#    #+#             */
-/*   Updated: 2023/03/06 11:36:15 by asioud           ###   ########.fr       */
+/*   Updated: 2023/03/06 18:09:03 by asioud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 # include "libft/includes/libft.h"
 
-#define GRN		"\e[0;32m"
-#define BGRN	"\e[1;32m"
-#define BRED	"\e[1;31m"
-#define RST		"\e[0m"
+# define GRN		"\e[0;32m"
+# define BGRN	"\e[1;32m"
+# define BRED	"\e[1;31m"
+# define RST		"\e[0m"
 
 enum    e_error_code
 {
@@ -32,4 +32,5 @@ int	display_err(enum e_error_code err);
 int parse(int argc, char **argv, t_philo_data *philo);
 enum e_error_code check_number(char *nb, int *param);
 void init(int argc, int *param, t_philo_data *philo);
+
 #endif
