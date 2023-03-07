@@ -6,18 +6,18 @@
 #    By: asioud <asioud@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/07 09:10:27 by asioud            #+#    #+#              #
-#    Updated: 2023/03/07 11:08:19 by asioud           ###   ########.fr        #
+#    Updated: 2023/03/07 11:36:48 by asioud           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# Project settings
-TARGET = philo
+
+NAME = philo
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-LDFLAGS = -I./lib -I./includes
+INCLUDES = -I./includes -I./lib
 LIB_FILE	= $(LIB_DIR)/libft.a
 
-# Directories
+
 SRC_DIR = src
 OBJ_DIR = obj
 INC_DIR = includes
@@ -28,25 +28,24 @@ SRC_FILES = $(wildcard $(SRC_DIR)/*.c)
 OBJ_FILES = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC_FILES))
 
 
-all: lib $(TARGET)
+all: lib $(NAME)
 
 
-$(TARGET): $(OBJ_FILES)
-	$(CC) $(CFLAGS) $(OBJ_FILES) -o $@ $(LDFLAGS)
+$(NAME): $(OBJ_FILES)
+	$(CC) $(CFLAGS) $(INCLUDES) $(LIB_FILE) $(OBJ_FILES) -o $@ 
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
-	$(CC) $(CFLAGS) -c $(LIB_FILE) $< -o $@ $(LDFLAGS)
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@ 
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
 
- 
 clean:
 	rm -rf $(OBJ_DIR)
 
 fclean: clean
-	rm -f $(TARGET)
+	rm -f $(NAME)
 
 re: fclean all
 
@@ -56,4 +55,7 @@ lib:
 libclean:
 	make -C $(LIB_DIR) clean
 
-.PHONY: all clean fclean re lib libclean
+libfclean:
+	@cd $(LIB_DIR) && rm -f libft.a
+
+.PHONY: all clean fclean re lib libclean libfclean
