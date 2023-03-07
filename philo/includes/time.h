@@ -6,7 +6,7 @@
 /*   By: asioud <asioud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 08:59:50 by asioud            #+#    #+#             */
-/*   Updated: 2023/03/07 09:11:58 by asioud           ###   ########.fr       */
+/*   Updated: 2023/03/07 10:44:44 by asioud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include <unistd.h>
 
-u_int64_t   get_time(void);
-void        ft_sleep(int ms);
+uint32_t   get_time(void);
+void        ft_sleep(uint32_t ms);
 
 #endif

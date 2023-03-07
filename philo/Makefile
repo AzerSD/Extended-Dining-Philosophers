@@ -6,40 +6,54 @@
 #    By: asioud <asioud@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/07 09:10:27 by asioud            #+#    #+#              #
-#    Updated: 2023/03/07 09:38:28 by asioud           ###   ########.fr        #
+#    Updated: 2023/03/07 11:08:19 by asioud           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	philo
-CC			=	cc
-RM			=	rm -f
-LIBFT		= 	libft/libft.a
-CFLAGS		=	-Wall -Wextra -Werror
-INCLUDES	= 	-I ./includes/
-LIBFT_H		=	./lib/libft.h
+# Project settings
+TARGET = philo
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+LDFLAGS = -I./lib -I./includes
+LIB_FILE	= $(LIB_DIR)/libft.a
+
+# Directories
+SRC_DIR = src
+OBJ_DIR = obj
+INC_DIR = includes
+LIB_DIR = lib
 
 
-src			=	parser.c \
-				philo.c \
-				time.c \
+SRC_FILES = $(wildcard $(SRC_DIR)/*.c)
+OBJ_FILES = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC_FILES))
 
-all:			$(NAME)
 
-obj:
-	mkdir -p obj
+all: lib $(TARGET)
 
-obj/%.o:	%.c | obj
-	cd lib && make
-	$(CC) $(CFLAGS) -c $(INCLUDES) $^ -o $@
 
+$(TARGET): $(OBJ_FILES)
+	$(CC) $(CFLAGS) $(OBJ_FILES) -o $@ $(LDFLAGS)
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $(LIB_FILE) $< -o $@ $(LDFLAGS)
+
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+
+
+ 
 clean:
-	cd lib && make clean
-	$(RM) philo
+	rm -rf $(OBJ_DIR)
 
-fclean:		clean
-	cd lib && make fclean
-	$(RM) obj
+fclean: clean
+	rm -f $(TARGET)
 
-re:	fclean all
+re: fclean all
 
-./PHONY: all clean fclean re
+lib:
+	make -C $(LIB_DIR)
+
+libclean:
+	make -C $(LIB_DIR) clean
+
+.PHONY: all clean fclean re lib libclean
