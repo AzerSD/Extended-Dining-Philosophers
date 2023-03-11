@@ -1,41 +1,29 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: asioud <asioud@student.42.fr>              +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/03/07 09:10:27 by asioud            #+#    #+#              #
-#    Updated: 2023/03/11 09:12:30 by asioud           ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+
+NAME		=	philo
+CC			=	gcc
+CFLAGS		=	-Wall -Wextra -Werror -pthread
+INCLUDES	=	-I./includes -I./lib
+LIB_FILE	=	$(LIB_DIR)/libft.a
 
 
-NAME = philo
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -pthread
-INCLUDES = -I./includes -I./lib
-LIB_FILE	= $(LIB_DIR)/libft.a
+SRC_DIR		=	src
+OBJ_DIR		=	obj
+INC_DIR		=	includes
+LIB_DIR		=	lib
 
 
-SRC_DIR = src
-OBJ_DIR = obj
-INC_DIR = includes
-LIB_DIR = lib
+SRC_FILES	=	$(wildcard $(SRC_DIR)/*.c)
+OBJ_FILES	=	$(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC_FILES))
 
 
-SRC_FILES = $(wildcard $(SRC_DIR)/*.c)
-OBJ_FILES = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC_FILES))
+all:	lib $(NAME)
 
 
-all: lib $(NAME)
-
-
-$(NAME): $(OBJ_FILES)
-	$(CC) $(CFLAGS) $(INCLUDES) $(LIB_FILE) $(OBJ_FILES) -o $@ 
+$(NAME):	$(OBJ_FILES)
+	$(CC) $(CFLAGS) $(INCLUDES) $(LIB_FILE) $(OBJ_FILES) -o $@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@ 
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
