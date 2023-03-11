@@ -33,8 +33,8 @@ int	parse(int argc, char **argv, t_data *data)
 	i = 0;
 	while (i < argc - 1)
 	{
-		if ((i == 0 && param[i] < 1) || ((i == 4) \
-			&& param[i] < 0) || ((i != 0 && i != 4) && param[i] < 60))
+		if ((i == 0 && param[i] < 1) || ((i == 4) && param[i] < 0) || ((i != 0
+					&& i != 4) && param[i] < 60))
 			return (OUT_OF_RANGE);
 		i++;
 	}

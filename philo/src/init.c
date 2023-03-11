@@ -6,7 +6,7 @@
 /*   By: asioud <asioud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 15:17:23 by asioud            #+#    #+#             */
-/*   Updated: 2023/03/11 12:26:19 by asioud           ###   ########.fr       */
+/*   Updated: 2023/03/11 12:31:49 by asioud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ t_error	init_philo_mutexes(t_data *data)
 	i = 0;
 	while (i < data->nb_philos)
 	{
-		if (pthread_mutex_init(&data->philo[i].fork, NULL) \
-			&& pthread_mutex_init(&data->philo[i].m_last_meal, NULL) \
+		if (pthread_mutex_init(&data->philo[i].fork, NULL)
+			&& pthread_mutex_init(&data->philo[i].m_last_meal, NULL)
 			&& pthread_mutex_init(&data->philo[i].m_nb_meal, NULL))
 		{
 			destroy_thread_mutexes(data, i);

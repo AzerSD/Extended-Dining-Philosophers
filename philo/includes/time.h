@@ -20,11 +20,11 @@
  * second * 1000 = milliseconds
  * microseconds / 1000 = milliseconds
 */
-long int   get_time(void);
+long int	get_time(void);
 
 /**
  * @brief Sleep for time milliseconds
 */
-void	ft_sleep(uint64_t time);
+void		ft_sleep(uint64_t time);
 
 #endif

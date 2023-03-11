@@ -29,7 +29,7 @@ long int	get_time(void)
 
 void	ft_sleep(uint64_t sleep_time)
 {
-	u_int64_t	start;
+	u_int64_t start;
 
 	start = get_time();
 	while ((get_time() - start) < sleep_time)

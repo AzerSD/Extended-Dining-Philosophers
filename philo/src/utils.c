@@ -6,26 +6,12 @@
 /*   By: asioud <asioud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 15:07:31 by asioud            #+#    #+#             */
-/*   Updated: 2023/03/11 11:46:54 by asioud           ###   ########.fr       */
+/*   Updated: 2023/03/11 12:37:09 by asioud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 #include "utils.h"
-
-void	clean_thread_mutexes(t_data *data)
-{
-	int	i;
-
-	i = 0;
-	while (i < data->nb_philos)
-	{
-		pthread_mutex_destroy(&data->philo[i].fork);
-		pthread_mutex_destroy(&data->philo[i].m_last_meal);
-		pthread_mutex_destroy(&data->philo[i].m_nb_meal);
-		i++;
-	}
-}
 
 void	philo_log(long int timestamp, int id, const char *status, t_data *data)
 {
@@ -56,4 +42,10 @@ void	destroy_data_mutexes(t_data *data)
 {
 	pthread_mutex_destroy(&data->philo_log);
 	pthread_mutex_destroy(&data->finish);
+}
+
+void	free_data(t_data *data)
+{
+	destroy_thread_mutexes(data, data->nb_philos);
+	destroy_data_mutexes(data);
 }

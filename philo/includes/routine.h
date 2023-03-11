@@ -15,10 +15,10 @@
 
 # include "philo.h"
 
-void    nap_time(t_philo *philo);
-void    eat(t_philo *philo);
-void    take_fork(t_philo *philo);
-void    life_cycle(t_philo *philo);
+void	nap_time(t_philo *philo);
+void	eat(t_philo *philo);
+void	take_fork(t_philo *philo);
+void	life_cycle(t_philo *philo);
 void	*still_alive(void *arg);
 
 #endif

@@ -19,13 +19,13 @@
  * Init philo_log and finish mutexes and destroy them in case one failed
  * @param data philo data
 */
-t_error    init_data_mutexes(t_data *data);
+t_error	init_data_mutexes(t_data *data);
 
 /**
  * Init fork, m_last_meal, m_nb_meal mutexes and destroy them in case one failed
  * @param data program data
 */
-t_error    init_philo_mutexes(t_data *data);
+t_error	init_philo_mutexes(t_data *data);
 
 /**
  * Initialize and create philosopher threads
@@ -39,4 +39,4 @@ void	init_philo_thread(t_data *data);
 */
 void	*routine(void *arg);
 
-# endif
+#endif

@@ -15,10 +15,9 @@
 
 # include "philo.h"
 
-int	display_err(t_error err);
-int parse(int argc, char **argv, t_data *data);
-t_error check_number(char *nb, int *param);
-int init(int argc, int *param, t_data *data);
+int		display_err(t_error err);
+int		parse(int argc, char **argv, t_data *data);
+t_error	check_number(char *nb, int *param);
+int		init(int argc, int *param, t_data *data);
 
 #endif
-
