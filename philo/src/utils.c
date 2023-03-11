@@ -13,23 +13,23 @@
 #include "philo.h"
 #include "utils.h"
 
-void    clean_thread_mutexes(t_data *data)
+void	clean_thread_mutexes(t_data *data)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (i < data->nb_philos)
-    {
-        pthread_mutex_destroy(&data->philo[i].fork);
-        pthread_mutex_destroy(&data->philo[i].m_last_meal);
-        pthread_mutex_destroy(&data->philo[i].m_nb_meal);
-        i++;
-    }
+	i = 0;
+	while (i < data->nb_philos)
+	{
+		pthread_mutex_destroy(&data->philo[i].fork);
+		pthread_mutex_destroy(&data->philo[i].m_last_meal);
+		pthread_mutex_destroy(&data->philo[i].m_nb_meal);
+		i++;
+	}
 }
 
 void	philo_log(long int timestamp, int id, const char *status, t_data *data)
 {
-	int time;
+	int	time;
 
 	pthread_mutex_lock(&data->finish);
 	if (data->stop == 1)
@@ -39,10 +39,10 @@ void	philo_log(long int timestamp, int id, const char *status, t_data *data)
 	}
 	pthread_mutex_unlock(&data->finish);
 	time = timestamp - data->start;
-	printf(WHT"%d n°%d %s\n"RST, time, id + 1, status);
+	printf(WHT "%d n°%d %s\n" RST, time, id + 1, status);
 }
 
-void    destroy_thread_mutexes(t_data *data, int i)
+void	destroy_thread_mutexes(t_data *data, int i)
 {
 	while (--i)
 	{
@@ -52,8 +52,8 @@ void    destroy_thread_mutexes(t_data *data, int i)
 	}
 }
 
-void destroy_data_mutexes(t_data *data)
+void	destroy_data_mutexes(t_data *data)
 {
-    pthread_mutex_destroy(&data->philo_log);
-    pthread_mutex_destroy(&data->finish);
+	pthread_mutex_destroy(&data->philo_log);
+	pthread_mutex_destroy(&data->finish);
 }

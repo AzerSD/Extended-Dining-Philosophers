@@ -6,14 +6,14 @@
 #    By: asioud <asioud@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/07 09:10:27 by asioud            #+#    #+#              #
-#    Updated: 2023/03/08 18:33:31 by asioud           ###   ########.fr        #
+#    Updated: 2023/03/11 09:12:30 by asioud           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME = philo
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g -pthread
+CFLAGS = -Wall -Wextra -Werror -pthread
 INCLUDES = -I./includes -I./lib
 LIB_FILE	= $(LIB_DIR)/libft.a
 

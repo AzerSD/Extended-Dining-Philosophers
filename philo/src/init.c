@@ -6,12 +6,12 @@
 /*   By: asioud <asioud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 15:17:23 by asioud            #+#    #+#             */
-/*   Updated: 2023/03/10 18:08:54 by asioud           ###   ########.fr       */
+/*   Updated: 2023/03/11 08:56:29 by asioud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
 #include "init.h"
+#include "philo.h"
 #include "routine.h"
 #include "utils.h"
 
@@ -29,7 +29,7 @@ static int	handle_one_philo(t_philo *philo)
 	return (0);
 }
 
-t_error    init_data_mutexes(t_data *data)
+t_error	init_data_mutexes(t_data *data)
 {
 	if (pthread_mutex_init(&data->philo_log, NULL))
 		return (MUTEX_ERROR);
@@ -41,16 +41,16 @@ t_error    init_data_mutexes(t_data *data)
 	return (VALID);
 }
 
-t_error    init_philo_mutexes(t_data *data)
+t_error	init_philo_mutexes(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < data->nb_philos)
 	{
-		if (pthread_mutex_init(&data->philo[i].fork, NULL) && \
-			pthread_mutex_init(&data->philo[i].m_last_meal, NULL) && \
-			pthread_mutex_init(&data->philo[i].m_nb_meal, NULL))
+		if (pthread_mutex_init(&data->philo[i].fork, NULL) \
+			&& pthread_mutex_init(&data->philo[i].m_last_meal, NULL) \
+			&& pthread_mutex_init(&data->philo[i].m_nb_meal, NULL))
 		{
 			destroy_thread_mutexes(data, i);
 			destroy_data_mutexes(data);
@@ -63,13 +63,12 @@ t_error    init_philo_mutexes(t_data *data)
 
 void	init_philo_thread(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < data->nb_philos)
 	{
-		pthread_create(&data->philo[i].t_id, NULL, \
-				&routine, &data->philo[i]);
+		pthread_create(&data->philo[i].t_id, NULL, &routine, &data->philo[i]);
 		i++;
 	}
 	i = 0;
@@ -108,4 +107,3 @@ void	*routine(void *arg)
 	ft_sleep(philo->data->time_to_die);
 	return (NULL);
 }
-

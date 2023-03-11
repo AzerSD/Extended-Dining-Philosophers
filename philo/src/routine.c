@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   life_cycle.c                                          :+:      :+:    :+:   */
+/*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asioud <asioud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 09:16:54 by asioud            #+#    #+#             */
-/*   Updated: 2023/03/09 14:41:40 by asioud           ###   ########.fr       */
+/*   Updated: 2023/03/11 09:02:09 by asioud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 #include "routine.h"
-#include "utils.h"
 #include "time.h"
-
+#include "utils.h"
 
 void	nap_time(t_philo *philo)
 {
@@ -51,7 +50,7 @@ void	eat(t_philo *philo)
 	else
 		ft_sleep(data->time_to_eat);
 	pthread_mutex_unlock(&philo->fork);
-	if (id == data->nb_philos -1)
+	if (id == data->nb_philos - 1)
 		pthread_mutex_unlock(&data->philo[0].fork);
 	else
 		pthread_mutex_unlock(&data->philo[id + 1].fork);
@@ -59,8 +58,8 @@ void	eat(t_philo *philo)
 
 void	take_fork(t_philo *philo)
 {
-	t_data	*data;
-	uint16_t		id;
+	t_data		*data;
+	uint16_t	id;
 
 	id = philo->id;
 	data = philo->data;
@@ -104,9 +103,9 @@ void	*still_alive(void *arg)
 	return (NULL);
 }
 
-void life_cycle(t_philo *philo)
+void	life_cycle(t_philo *philo)
 {
-    take_fork(philo);
-    eat(philo);
-    nap_time(philo);
+	take_fork(philo);
+	eat(philo);
+	nap_time(philo);
 }

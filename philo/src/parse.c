@@ -6,22 +6,23 @@
 /*   By: asioud <asioud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 02:20:40 by asioud            #+#    #+#             */
-/*   Updated: 2023/03/10 12:32:54 by asioud           ###   ########.fr       */
+/*   Updated: 2023/03/11 09:11:14 by asioud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
-#include "parse.h"
 #include "libft.h"
+#include "parse.h"
+#include "philo.h"
 
-int parse(int argc, char **argv, t_data *data)
+int	parse(int argc, char **argv, t_data *data)
 {
-	int			param[argc - 1];
-	int			i;
-	t_error		err;
-	
+	int		*param;
+	int		i;
+	t_error	err;
+
 	if (argc != 5 && argc != 6)
 		return (NB_PARAM);
+	param = malloc(sizeof(int) * (argc - 1));
 	i = 0;
 	while (++i < argc)
 	{
@@ -32,9 +33,8 @@ int parse(int argc, char **argv, t_data *data)
 	i = 0;
 	while (i < argc - 1)
 	{
-		if ((i == 0 && param[i] < 1) \
-			|| ((i == 4) && param[i] < 0) \
-			|| ((i != 0 && i != 4) && param[i] < 60))
+		if ((i == 0 && param[i] < 1) || ((i == 4) \
+			&& param[i] < 0) || ((i != 0 && i != 4) && param[i] < 60))
 			return (OUT_OF_RANGE);
 		i++;
 	}
@@ -46,13 +46,16 @@ int parse(int argc, char **argv, t_data *data)
 t_error	check_number(char *nb, int *param)
 {
 	int			i;
-	static int  c;
+	static int	c;
 
 	i = 0;
 	while (nb[i])
 	{
 		if (nb[i] < '0' || nb[i] > '9')
+		{
+			free(param);
 			return (NOT_A_NUMBER);
+		}
 		i++;
 	}
 	param[c] = ft_atoi(nb);
@@ -63,21 +66,22 @@ t_error	check_number(char *nb, int *param)
 int	display_err(t_error err)
 {
 	if (err == NOT_A_NUMBER)
-		printf(BRED"Error: Only Numeric Input Is Accepted!!!!\n"RST);
+		printf(BRED "Error: Only Numeric Input Is Accepted!!!!\n" RST);
 	else if (err == NB_PARAM)
-		printf(BRED"Error: Wrong Number Of Parameters!!!!\n"RST);
+		printf(BRED "Error: Wrong Number Of Parameters!!!!\n" RST);
 	else if (err == OUT_OF_RANGE)
-		printf(BRED"Error: Numbers Out Of Range!!!!\n"RST);
+		printf(BRED "Error: Numbers Out Of Range!!!!\n" RST);
 	else if (err == MALLOC_ERROR)
-		printf(BRED"System Error: Philo Allocation Failed!!!!\n"RST);
-	printf(BGRN"Usage: ./philo");
-	printf(GRN" number_of_philosophers time_to_die time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]"RST);
-    return 0;
+		printf(BRED "System Error: Philo Allocation Failed!!!!\n" RST);
+	printf(BGRN "Usage: ./philo");
+	printf(GRN " number_of_philosophers time_to_die time_to_eat time_to_sleep \
+			[number_of_times_each_philosopher_must_eat]" RST);
+	return (0);
 }
 
 int	init(int argc, int *param, t_data *data)
 {
-	int i;
+	int	i;
 
 	if (argc == 6)
 		data->number_to_eat = param[4];
@@ -88,6 +92,7 @@ int	init(int argc, int *param, t_data *data)
 	data->time_to_eat = param[2];
 	data->time_to_sleep = param[3];
 	data->stop = 0;
+	free(param);
 	data->philo = malloc(sizeof(t_philo) * data->nb_philos);
 	if (data->philo == NULL)
 		return (1);
