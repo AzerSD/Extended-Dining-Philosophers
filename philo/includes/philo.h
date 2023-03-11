@@ -6,7 +6,7 @@
 /*   By: asioud <asioud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 06:46:10 by asioud            #+#    #+#             */
-/*   Updated: 2023/03/11 13:26:39 by asioud           ###   ########.fr       */
+/*   Updated: 2023/03/11 13:39:48 by asioud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@
 # define RST "\e[0m"
 
 # define DIED "died"
-# define IS_EATING MAG"is eating"RST
-# define IS_SLEEPING BLU"is sleeping"RST
-# define IS_THINKING CYN"is thinking"RST
-# define TAKEN_FORK YEL"has taken a fork"RST
+# define IS_EATING "is eating"
+# define IS_SLEEPING "is sleeping"
+# define IS_THINKING "is thinking"
+# define TAKEN_FORK "has taken a fork"
 
 typedef enum e_error_code
 {

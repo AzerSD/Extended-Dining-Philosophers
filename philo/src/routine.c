@@ -6,7 +6,7 @@
 /*   By: asioud <asioud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 09:16:54 by asioud            #+#    #+#             */
-/*   Updated: 2023/03/11 09:02:09 by asioud           ###   ########.fr       */
+/*   Updated: 2023/03/11 13:39:37 by asioud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@
 void	nap_time(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->data->philo_log);
-	philo_log(get_time(), philo->id, IS_SLEEPING, philo->data);
+	philo_log(get_time(), philo->id, BLU IS_SLEEPING RST, philo->data);
 	pthread_mutex_unlock(&philo->data->philo_log);
 	if (philo->data->time_to_sleep > philo->data->time_to_die)
 		ft_sleep(philo->data->time_to_die * 2);
 	else
 		ft_sleep(philo->data->time_to_sleep);
 	pthread_mutex_lock(&philo->data->philo_log);
-	philo_log(get_time(), philo->id, IS_THINKING, philo->data);
+	philo_log(get_time(), philo->id, MAG IS_THINKING RST, philo->data);
 	pthread_mutex_unlock(&philo->data->philo_log);
 }
 
@@ -43,7 +43,7 @@ void	eat(t_philo *philo)
 	philo->nb_meal += 1;
 	pthread_mutex_unlock(&philo->m_nb_meal);
 	pthread_mutex_lock(&philo->data->philo_log);
-	philo_log(get_time(), philo->id, IS_EATING, data);
+	philo_log(get_time(), philo->id, GRN IS_EATING RST, data);
 	pthread_mutex_unlock(&philo->data->philo_log);
 	if (data->time_to_eat > data->time_to_die)
 		ft_sleep(data->time_to_die * 2);
@@ -69,8 +69,8 @@ void	take_fork(t_philo *philo)
 	else
 		pthread_mutex_lock(&data->philo[id + 1].fork);
 	pthread_mutex_lock(&data->philo_log);
-	philo_log(get_time(), philo->id, TAKEN_FORK, data);
-	philo_log(get_time(), philo->id, TAKEN_FORK, data);
+	philo_log(get_time(), philo->id, YEL TAKEN_FORK RST, data);
+	philo_log(get_time(), philo->id, YEL TAKEN_FORK RST, data);
 	pthread_mutex_unlock(&data->philo_log);
 }
 
@@ -89,7 +89,7 @@ void	*still_alive(void *arg)
 		{
 			pthread_mutex_unlock(&philo->m_nb_meal);
 			pthread_mutex_lock(&philo->data->philo_log);
-			philo_log(get_time(), philo->id, DIED, philo->data);
+			philo_log(get_time(), philo->id, RED DIED RST, philo->data);
 			pthread_mutex_unlock(&philo->data->philo_log);
 		}
 		else
