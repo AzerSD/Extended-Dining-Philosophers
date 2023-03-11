@@ -6,7 +6,7 @@
 /*   By: asioud <asioud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 15:07:31 by asioud            #+#    #+#             */
-/*   Updated: 2023/03/10 19:04:52 by asioud           ###   ########.fr       */
+/*   Updated: 2023/03/11 11:46:54 by asioud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	philo_log(long int timestamp, int id, const char *status, t_data *data)
 	}
 	pthread_mutex_unlock(&data->finish);
 	time = timestamp - data->start;
-	printf(WHT "%d n°%d %s\n" RST, time, id + 1, status);
+	printf(WHT "%d %d %s\n" RST, time, id + 1, status);
 }
 
 void	destroy_thread_mutexes(t_data *data, int i)
