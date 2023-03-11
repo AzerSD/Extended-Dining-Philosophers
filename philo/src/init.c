@@ -6,7 +6,7 @@
 /*   By: asioud <asioud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 15:17:23 by asioud            #+#    #+#             */
-/*   Updated: 2023/03/11 13:25:53 by asioud           ###   ########.fr       */
+/*   Updated: 2023/03/11 13:46:50 by asioud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	handle_one_philo(t_philo *philo)
 	if (philo->data->nb_philos == 1)
 	{
 		pthread_mutex_lock(&philo->data->philo_log);
-		philo_log(get_time(), philo->id, TAKEN_FORK, philo->data);
+		philo_log(get_time(), philo->id, YEL TAKEN_FORK RST, philo->data);
 		ft_sleep(philo->data->time_to_die);
 		philo_log(get_time(), philo->id, BRED DIED RST, philo->data);
 		pthread_mutex_unlock(&philo->data->philo_log);
